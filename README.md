@@ -4,83 +4,40 @@ OpenClaw skills crafted by [SnoopyClaw](https://github.com/terlivy) (SC) — bor
 
 ## Skills
 
-### 🧠 workspace-manager
+### 🎯 sas-default
+SAS工作准则执行智能体 - 基于检索指令+完整索引的分层架构。每次任务执行时自动检索SAS准则相关章节，确保按完整规则执行。
+- **触发词**: 'SAS准则'、'SAS执行'、'六阶段'、'阶段门'
+- **SAS版本**: v1.4.0
+- **核心原则**: 不知必查，查后再做
 
-Audit, optimize, and maintain OpenClaw workspace files. Keep your agent's context clean and token-efficient.
+### 📋 sas-task-planner
+SAS任务全生命周期管理 - 计划→方案设计→实施→测试→复盘→运维。拆解原子步骤、估算成本、智能体分配。
+- **触发词**: '做计划'、'出方案'、'工作计划'、'任务规划'
+- **阶段门控**: 自动审批 + 人工审批
+- **质量标准**: 快/准/问题少/成本低
 
-- File size auditing with clear thresholds
-- Redundancy detection across SOUL.md / AGENTS.md / MEMORY.md / TOOLS.md
-- Memory refinery: daily logs → MEMORY.md → SKILL.md
-- Checklist management for risky operations
-- Token budget optimization
+### 🔗 harness-leader
+Orchestrate sub-agents as a Leader/Harness using the Effective Harnesses pattern and Claude Agent Teams architecture.
+- **触发词**: 'spawn sub-agent', 'delegate task', 'multi-agent'
+- **核心**: 多Agent协作引擎、子任务派生、实时监控
+- **角色模板**: Architect, Backend/Frontend Engineer, DevOps, PM
 
-**Triggers:** "audit workspace", "refine memory", "check file sizes", "workspace cleanup"
+### 🏥 system-healer
+Self-healing system that monitors and repairs common issues automatically.
+- **触发词**: 'system check', 'heal', 'recover'
 
-### 🤝 harness-leader
+### 📂 workspace-manager
+Manage OpenClaw workspace structure and configuration.
+- **触发词**: 'workspace', 'project setup'
 
-Orchestrate sub-agents as a Leader/Harness using the Effective Harnesses pattern. Never forward results blindly — always verify.
+## 🔗 相关仓库
 
-- 7 role templates (frontend, backend, designer, PM, tester, devops)
-- Sub-agent lifecycle: spawn → execute → review → verify → commit
-- Task decomposition with DAG dependency management
-- Model selection by task difficulty (cost optimization)
-- Mandatory review checklist (git diff → test → restart → confirm)
+| 仓库 | 地址 | 说明 |
+|------|------|------|
+| SAS 准则文档 | https://github.com/terlivy/SAS | 工作准则完整文档 |
+| SAS 插件 | https://github.com/terlivy/SAS-plug-in | 阶段门控执行引擎 |
+| SAS 脚本 | https://github.com/terlivy/SAS-script | 自动化脚本集合 |
 
-**Triggers:** "spawn sub-agent", "delegate task", "review code", "task decomposition"
+## 📜 许可
 
-### 🔄 system-healer
-
-Self-healing infrastructure for OpenClaw Gateway and dependent services. Automated recovery with manual oversight.
-
-- systemd OnFailure auto-recovery chain
-- Safe restart protocol with pre-checks
-- Health check script (Ollama, Gateway, ports, disk, memory)
-- Error classification and auto-fix strategies
-- Diagnostic command reference
-
-**Triggers:** "heal gateway", "fix gateway", "health check", "fault diagnosis"
-
-## Installation
-
-### Option A: Install All Skills
-
-```bash
-# Clone the repository
-git clone https://github.com/terlivy/snoopyclaw-skills.git ~/.openclaw/workspace/skills/snoopyclaw-skills
-
-# Symlink each skill to your skills directory
-for skill in workspace-manager harness-leader system-healer; do
-  ln -sf ~/.openclaw/workspace/skills/snoopyclaw-skills/$skill ~/.openclaw/workspace/skills/$skill
-done
-
-# Restart Gateway
-openclaw gateway restart
-```
-
-### Option B: Install Individual Skill
-
-```bash
-# Just workspace-manager
-git clone https://github.com/terlivy/snoopyclaw-skills.git /tmp/sc-skills
-ln -sf /tmp/sc-skills/workspace-manager ~/.openclaw/workspace/skills/workspace-manager
-openclaw gateway restart
-```
-
-### Option C: Install from .skill Package
-
-```bash
-# Download the .skill file from releases, then:
-openclaw skills install workspace-manager.skill
-openclaw skills install harness-leader.skill
-openclaw skills install system-healer.skill
-```
-
-## About
-
-These skills were developed by **SnoopyClaw** (SC), an AI agent running on OpenClaw. They are distilled from real production experience — managing a complex multi-agent system with memory systems, service deployments, and self-healing infrastructure.
-
-The skills follow the [Effective Harnesses for Long-Running Agents](https://arxiv.org/abs/2410.23283) pattern and the OpenClaw AgentSkills specification.
-
-## License
-
-MIT
+本项目为 SnoopyClaw 团队内部使用。
