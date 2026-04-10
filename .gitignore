@@ -3,3 +3,7 @@ dist/
 *.skill
 .DS_Store
 *.log
+
+# Python cache
+__pycache__/
+*.pyc
