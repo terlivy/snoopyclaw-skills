@@ -463,6 +463,15 @@ skill_inventory:
     source: "extension"
     reliability: 0.85
 
+  - name: "telegram-integration"
+    category: "通信"
+    trigger_words: ["Telegram集成", "Telegram bot", "电报机器人", "群组bot", "隐私模式", "bot没反应"]
+    description: "Telegram bot 集成配置：隐私模式关闭、Gateway设置、常见问题排查"
+    skill_path: "telegram-integration/SKILL.md"
+    source: "external"
+    reliability: 0.95
+    note: "2026-05-27 添加，解决群组Bot不响应问题"
+
   # ============================================================
   # 知识管理 (Knowledge Management)
   # ============================================================
